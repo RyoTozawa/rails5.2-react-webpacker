@@ -11,10 +11,12 @@ import "babel-polyfill"
 import 'stylesheets/application'
 import 'bootstrap'
 import Todos from './todos'
+import ToDoList from './todolist'
 import WebpackerReact from 'webpacker-react'
 
 WebpackerReact.setup({
-  Todos
+  Todos,
+  ToDoList
 })
 
 console.log('Hello World from Webpacker')

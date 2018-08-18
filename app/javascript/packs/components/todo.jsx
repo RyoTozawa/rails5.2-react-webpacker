@@ -5,16 +5,19 @@ export default class Todo extends React.PureComponent {
     super(props)
     this.state = { todo: props.todo, isEdit: false }
   }
+  // 状態
   editMode() {
-    this.setState({ isEdit: true })
+    this.setState({ isEdit: true }) 
   }
+  // 更新
   updateTodo(todo) {
     this.setState({ todo })
   }
+  // 保存
   save() {
     const { handleUpdateTodo } = this.props
     const { todo } = this.state
-    this.setState({ isEdit: false })
+    this.setState({ isEdit: false }) //保存時に状態をfalseに変更
     handleUpdateTodo(todo)
   }
   render() {
@@ -22,7 +25,7 @@ export default class Todo extends React.PureComponent {
     return (
       <li
         className="list-group-item"
-        onClick={() => this.editMode()}
+        onClick={() => this.editMode()} //タスククリック時にTrue
       >
         {isEdit
           ?
@@ -30,7 +33,7 @@ export default class Todo extends React.PureComponent {
             <input
               type="text"
               defaultValue={todo}
-              onChange={e => this.updateTodo(e.target.value)}
+              onChange={e => this.updateTodo(e.target.value)} //フォームが切り替わる時に値を更新
               className="form-control"
               autoFocus
             />

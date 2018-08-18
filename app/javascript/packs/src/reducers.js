@@ -1,0 +1,40 @@
+import { combineReducers } from 'redux'
+import { CHANGE_NAME, INITIALIZE_FORM } from './actions'
+
+const initialState = {
+    form: {  // AddFormに入力されている文字列
+      name: '',
+    },
+    todos: {
+      isFetching: false,  // サーバーからリストを取ってきている最中かどうか
+      todoArray: [],  // タスクのデータを入れるArray
+    },
+  }
+
+const formReducer = (state = initialState.form, action) => {
+  switch (action.type) {
+    case CHANGE_NAME:
+      return {
+        ...state,
+        name: action.name,
+      }
+    case INITIALIZE_FORM:
+      return initialState.form
+    default:
+      return state
+  }
+}
+
+const todosReducer = (state = initialState.todos, action) => {
+       switch (action.type) {
+         default:
+           return state
+       }
+     }
+    
+const rootReducer = combineReducers({
+    form: formReducer,
+    todos: todosReducer,
+    })
+    
+export default rootReducer
